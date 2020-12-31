@@ -7,7 +7,6 @@ export const flashcardsSlice = createSlice({
   },
   reducers: {
     update: (state, action) => {
-        console.log(action);
         state.value = action.payload;
     },
   },

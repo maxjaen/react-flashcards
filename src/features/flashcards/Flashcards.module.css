@@ -1,0 +1,30 @@
+header {
+  height: 100px;
+}
+
+.content {
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.input {
+  width: 80%;
+  height: 240px;
+  display: block;
+  margin-bottom: 60px;
+}
+
+.card {
+  border: 2px solid black;
+  width: 80%;
+  height: 240px;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.addbtn {
+  display: block;
+}
