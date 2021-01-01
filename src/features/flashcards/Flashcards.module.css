@@ -1,6 +1,7 @@
 body {
   background-color: #3c3c3c;
 }
+
 header {
   height: 100px;
 }
@@ -10,50 +11,39 @@ header {
   padding-right: 35%;
 }
 
-.insertsection {
+.insertSection {
   width: 80%;
 }
 
-.input {
+.insertSection > .insertArea {
   width: 100%;
   height: 240px;
+  margin-bottom: 60px;
+}
+
+.insertSection > .insertArea,
+.insertButton {
   display: block;
-  margin-bottom: 60px;
 }
 
-.card {
-  border: 2px solid black;
-  width: 80%;
-  height: 240px;
-  margin-bottom: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: x-large;
-}
-
-.textsection {
+.textSection {
   display: flex;
   color: white;
   margin-bottom: 20px;
 }
 
-.insertbtn {
-  display: block;
-}
-
-.buttonsection {
+.buttonSection {
   display: flex;
 }
 
-.nextbtn,
-.previousbtn,
-.removebtn {
+.nextButton,
+.previousButton,
+.removeButton {
   width: 70px;
   margin-right: 10px;
 }
 
-.cardsection {
+.cardSection {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -64,14 +54,14 @@ flip card example taken from
 https://www.w3schools.com/howto/howto_css_flip_card.asp
 */
 
-.flipcard {
+.flipCard {
   background-color: transparent;
   width: 600px;
   height: 300px;
   perspective: 1000px;
 }
 
-.flipcardinner {
+.flipCardInner {
   position: relative;
   width: 100%;
   height: 100%;
@@ -80,12 +70,12 @@ https://www.w3schools.com/howto/howto_css_flip_card.asp
   transform-style: preserve-3d;
 }
 
-.flipcard:hover .flipcardinner {
+.flipCard:hover .flipCardInner {
   transform: rotateY(180deg);
 }
 
-.flipcardfront,
-.flipcardback {
+.flipCardFront,
+.flipCardBack {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -97,12 +87,12 @@ https://www.w3schools.com/howto/howto_css_flip_card.asp
   font-size: x-large;
 }
 
-.flipcardfront {
+.flipCardFront {
   background-color: rgb(255, 233, 30);
   color: black;
 }
 
-.flipcardback {
+.flipCardBack {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);

@@ -43,51 +43,60 @@ export function Flashcards() {
 
     return (
         <div>
-            <header></header>
+            <header>
+                {/* Maybe needed later */}
+            </header>
             <section className={styles.content}>
                 {
                 flashcards.length === 0
                 ?
-                <section>
-                    <section className={styles.insertionsection}>
-                        <textarea className={styles.input} onChange={e => setFlashcards(JSON.parse(e.target.value))}></textarea>
-                        <button className={styles.insertbtn} onClick={insertDeck}>
+                <div>
+                    <section className={styles.insertSection}>
+                        <textarea
+                            className={styles.insertArea}
+                            onChange={
+                                e => setFlashcards(JSON.parse(e.target.value))
+                            }>    
+                        </textarea>
+                        <button className={styles.insertButton} onClick={insertDeck}>
                             Add Flashcards
                         </button>
                     </section>
-                </section>
+                </div>
                 :
-                <section>
-                    <section className={styles.cardsection}>
-                        <div className={styles.flipcard}>
-                        <div className={styles.flipcardinner}>
-                            <div className={styles.flipcardfront}>
+                <div>
+                    <section className={styles.cardSection}>
+                        <div className={styles.flipCard}>
+                        <div className={styles.flipCardInner}>
+                            <div className={styles.flipCardFront}>
                                 {flashcards[index].key}
                             </div>
-                            <div className={styles.flipcardback}>
+                            <div className={styles.flipCardBack}>
                                 {flashcards[index].value}
                             </div>
                         </div>
                     </div>
                     </section>
-                    <section className={styles.textsection}>
+                    <section className={styles.textSection}>
                         <span>{index + 1}/{flashcards.length}</span>
                     </section>
-                    <section className={styles.buttonsection}>
-                        <button className={styles.previousbtn} onClick={previousCard}>
+                    <section className={styles.buttonSection}>
+                        <button className={styles.previousButton} onClick={previousCard}>
                             Previous
                         </button>
-                        <button className={styles.nextbtn} onClick={nextCard}>
+                        <button className={styles.nextButton} onClick={nextCard}>
                             Next
                         </button>
-                        <button className={styles.removebtn} onClick={removeCard}>
+                        <button className={styles.removeButton} onClick={removeCard}>
                             Delete
                         </button>
                     </section>
-                </section>    
+                </div>    
                 }
             </section>
-            <footer></footer>
+            <footer>
+                {/* Maybe needed later */}
+            </footer>
         </div>
     );
 }
