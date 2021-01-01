@@ -1,9 +1,20 @@
 body {
-  background-color: #3c3c3c;
+  background-color: #0b1227eb;
 }
 
 header {
   height: 100px;
+}
+
+h1 {
+  display: flex;
+  color: gold;
+}
+
+button {
+  background-color: #9e9e9e;
+  border: 4px solid #0b1227;
+  height: 35px;
 }
 
 .content {
@@ -18,7 +29,13 @@ header {
 .insertSection > .insertArea {
   width: 100%;
   height: 240px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  border: 4px solid #0b1227;
+  background-color: #9e9e9e;
+}
+
+.insertSection > .insertButton {
+  width: 130px;
 }
 
 .insertSection > .insertArea,
@@ -28,24 +45,40 @@ header {
 
 .textSection {
   display: flex;
-  color: white;
+  color: #9e9e9e;
   margin-bottom: 20px;
 }
 
-.buttonSection {
+.buttonSection,
+.ratingSection {
+  margin-bottom: 10px;
   display: flex;
 }
 
 .nextButton,
 .previousButton,
-.removeButton {
-  width: 70px;
+.removeButton,
+.goodButton,
+.middleButton,
+.badButton {
+  width: 100px;
   margin-right: 10px;
+}
+
+.goodButton {
+  background-color: green;
+}
+.middleButton {
+  background-color: yellow;
+}
+.badButton {
+  background-color: red;
 }
 
 .cardSection {
   display: flex;
   justify-content: center;
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 
@@ -88,12 +121,14 @@ https://www.w3schools.com/howto/howto_css_flip_card.asp
 }
 
 .flipCardFront {
-  background-color: rgb(255, 233, 30);
+  background-color: #9e9e9e;
   color: black;
+  box-shadow: 16px -16px#0b1227;
 }
 
 .flipCardBack {
-  background-color: dodgerblue;
+  background-color: #0b1227;
   color: white;
   transform: rotateY(180deg);
+  box-shadow: 16px -16px #9e9e9e;
 }

@@ -5,7 +5,6 @@ import {
     selectFlashcards,
 } from './flashcardsSlice';
 import styles from './Flashcards.module.css';
-
 export function Flashcards() {
 
     const flashcards = useSelector(selectFlashcards);
@@ -15,7 +14,7 @@ export function Flashcards() {
 
     const insertDeck = () =>  {
         dispatch(update(flashcardsValue));
-    }; 
+    };
     const nextCard = () => {
         if (index < flashcards.length - 1) {
             setIndex(index + 1);
@@ -40,6 +39,51 @@ export function Flashcards() {
         }
         dispatch(update(temp));
     };
+    const moveCard = (arr, i, steps) => {
+        const insertAndShift = (array, from, to) => {
+            let temp = array.slice();
+            temp.splice(to, 0, temp.splice(from, 1)[0]);
+            
+            dispatch(update(temp));
+        }
+
+        if (i + steps > arr.length - 1) {
+            let newIndex = i + steps - arr.length;
+            insertAndShift(arr, i, newIndex);
+        } else {
+            insertAndShift(arr, i, i + steps);
+        }
+    }
+
+    // key press events
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        switch (evt.key) {
+            case "a":
+                previousCard();
+                break;
+            case "s":
+                nextCard();
+                break;
+            case "d":
+                removeCard();
+                break;
+            case "y":
+                // good button
+                moveCard(flashcards, index, 5);
+                break;
+            case "x":
+                // middle button
+                moveCard(flashcards, index, 3);
+                break;
+            case "c":
+                // bad button
+                moveCard(flashcards, index, 1);
+                break;
+            default:
+                break;
+        }
+    };
 
     return (
         <div>
@@ -51,11 +95,12 @@ export function Flashcards() {
                 flashcards.length === 0
                 ?
                 <div>
+                    <h1>ADD NEW DECK</h1>
                     <section className={styles.insertSection}>
                         <textarea
                             className={styles.insertArea}
                             onChange={
-                                e => setFlashcards(JSON.parse(e.target.value))
+                                input => setFlashcards(JSON.parse(input.target.value))
                             }>    
                         </textarea>
                         <button className={styles.insertButton} onClick={insertDeck}>
@@ -65,6 +110,7 @@ export function Flashcards() {
                 </div>
                 :
                 <div>
+                    <h1>LEARN HARD. PLAY HARD.</h1>
                     <section className={styles.cardSection}>
                         <div className={styles.flipCard}>
                         <div className={styles.flipCardInner}>
@@ -89,6 +135,23 @@ export function Flashcards() {
                         </button>
                         <button className={styles.removeButton} onClick={removeCard}>
                             Delete
+                        </button>
+                    </section>
+                    <section className={styles.ratingSection}>
+                        <button className={styles.goodButton} onClick={() => {
+                            moveCard(flashcards, index, 5);
+                        }}>
+                            Good
+                        </button>
+                        <button className={styles.middleButton} onClick={() => {
+                            moveCard(flashcards, index, 3);
+                        }}>
+                            Middle
+                        </button>
+                        <button className={styles.badButton} onClick={() => {
+                            moveCard(flashcards, index, 1);
+                        }}>
+                            Bad
                         </button>
                     </section>
                 </div>    
