@@ -5,14 +5,12 @@ import {
   selectFlashcards,
 } from './flashcardsSlice';
 import styles from './Flashcards.module.css';
-import ReactCardFlip from 'react-card-flip';
 
 export function Flashcards() {
 
     const flashcards = useSelector(selectFlashcards);
     const dispatch = useDispatch();
     const [flashcardsValue, setFlashcards] = useState([]);
-    const [flipped, setFlipped] = useState(false);
     const [index, setIndex] = useState(0);       
 
     return (
@@ -30,16 +28,7 @@ export function Flashcards() {
                         </button>
                     </div>
                     : <div>
-                        <div className={styles.card} onClick={() => setFlipped(!flipped)}>
-                            {/* https://www.w3schools.com/howto/howto_css_flip_card.asp */}
-                            <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
-                                <div>
-                                    {flashcards[index].key}
-                                </div>
-                                <div>
-                                    {flashcards[index].value}
-                                </div>
-                            </ReactCardFlip>
+                        <div className={styles.card}>
                         </div>
                         <button
                             className={styles.addbtn}
@@ -65,8 +54,7 @@ export function Flashcards() {
                             className={styles.addbtn}
                             onClick={() => {
                                 let temp = flashcards.slice();
-                                temp.shift()
-                                setFlipped(false);
+                                temp.shift()        
                                 dispatch(update(temp));
                             }}
                             >
