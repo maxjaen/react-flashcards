@@ -1,14 +1,21 @@
+body {
+  background-color: #3c3c3c;
+}
 header {
   height: 100px;
 }
 
 .content {
-  padding-left: 25%;
-  padding-right: 25%;
+  padding-left: 35%;
+  padding-right: 35%;
+}
+
+.insertsection {
+  width: 80%;
 }
 
 .input {
-  width: 80%;
+  width: 100%;
   height: 240px;
   display: block;
   margin-bottom: 60px;
@@ -25,6 +32,78 @@ header {
   font-size: x-large;
 }
 
-.addbtn {
+.textsection {
+  display: flex;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.insertbtn {
   display: block;
+}
+
+.buttonsection {
+  display: flex;
+}
+
+.nextbtn,
+.previousbtn,
+.removebtn {
+  width: 70px;
+  margin-right: 10px;
+}
+
+.cardsection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* 
+flip card example taken from
+https://www.w3schools.com/howto/howto_css_flip_card.asp
+*/
+
+.flipcard {
+  background-color: transparent;
+  width: 600px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flipcardinner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+}
+
+.flipcard:hover .flipcardinner {
+  transform: rotateY(180deg);
+}
+
+.flipcardfront,
+.flipcardback {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.flipcardfront {
+  background-color: rgb(255, 233, 30);
+  color: black;
+}
+
+.flipcardback {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
 }
