@@ -10,7 +10,8 @@ export function Flashcards() {
     const flashcards = useSelector(selectFlashcards);
     const dispatch = useDispatch();
     const [flashcardsValue, setFlashcards] = useState([]);
-    const [index, setIndex] = useState(0);   
+    const [index, setIndex] = useState(0);
+    const [showFront, setShowFront] = useState(true);      
 
     const insertDeck = () =>  {
         dispatch(update(flashcardsValue));
@@ -53,32 +54,38 @@ export function Flashcards() {
         } else {
             insertAndShift(arr, i, i + steps);
         }
-    }
+    };
+    const toggleSideSwitch = () => {
+            setShowFront(!showFront);
+    };
 
     // key press events
     document.onkeydown = function(evt) {
         evt = evt || window.event;
         switch (evt.key) {
-            case "a":
+            case "ArrowLeft":
                 previousCard();
                 break;
-            case "s":
+            case "ArrowRight":
                 nextCard();
                 break;
-            case "d":
+            case "Backspace":
                 removeCard();
                 break;
-            case "y":
+            case "a":
                 // good button
                 moveCard(flashcards, index, 5);
                 break;
-            case "x":
+            case "s":
                 // middle button
                 moveCard(flashcards, index, 3);
                 break;
-            case "c":
+            case "d":
                 // bad button
                 moveCard(flashcards, index, 1);
+                break;
+            case " ":
+                toggleSideSwitch();
                 break;
             default:
                 break;
@@ -113,7 +120,7 @@ export function Flashcards() {
                     <h1>LEARN HARD. PLAY HARD.</h1>
                     <section className={styles.cardSection}>
                         <div className={styles.flipCard}>
-                        <div className={styles.flipCardInner}>
+                        <div className={styles.flipCardInner} style={{ transform: !showFront ? `rotateY(180deg)`: null }}>
                             <div className={styles.flipCardFront}>
                                 {flashcards[index].key}
                             </div>
