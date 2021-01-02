@@ -8,4 +8,10 @@
     - You can navigate to next or previous card, or just remove cards which you've already learned
     - When hovering over a card, you will see the back of the card
 
-> Next idea is to store decks in a PostgreSQL database... 
+> Next idea is to store decks in a PostgreSQL database...
+
+<br>
+
+# Showcase
+
+![Alt Text](./showcase.gif)

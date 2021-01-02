@@ -101,7 +101,7 @@ export function Flashcards() {
                 {
                 flashcards.length === 0
                 ?
-                <div>
+                <section className={styles.addDeckSection}>
                     <h1>ADD NEW DECK</h1>
                     <section className={styles.insertSection}>
                         <textarea
@@ -114,9 +114,9 @@ export function Flashcards() {
                             Add Flashcards
                         </button>
                     </section>
-                </div>
+                </section>
                 :
-                <div>
+                <section className={styles.learnDeckSection}>
                     <h1>LEARN HARD. PLAY HARD.</h1>
                     <section className={styles.cardSection}>
                         <div className={styles.flipCard}>
@@ -161,7 +161,7 @@ export function Flashcards() {
                             Bad
                         </button>
                     </section>
-                </div>    
+                </section>    
                 }
             </section>
             <footer>
