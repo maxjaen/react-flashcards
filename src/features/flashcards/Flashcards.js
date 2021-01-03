@@ -5,6 +5,11 @@ import {
     selectFlashcards,
 } from './flashcardsSlice';
 import styles from './Flashcards.module.css';
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export function Flashcards() {
 
     const flashcards = useSelector(selectFlashcards);
@@ -16,14 +21,22 @@ export function Flashcards() {
     const insertDeck = () =>  {
         dispatch(update(flashcardsValue));
     };
-    const nextCard = () => {
+    const nextCard = async () => {
+        if (!showFront) {
+            setShowFront(true);
+            await sleep(250);  // await transition before value update
+        }
         if (index < flashcards.length - 1) {
             setIndex(index + 1);
         } else {
             setIndex(0);
         }
     }
-    const previousCard = () => {
+    const previousCard = async () => {
+        if (!showFront) {
+            setShowFront(true);
+            await sleep(250); // await transition before value update
+        }
         if (index > 0) {
             setIndex(index - 1);
         } else {
@@ -120,12 +133,12 @@ export function Flashcards() {
                     <h1>LEARN HARD. PLAY HARD.</h1>
                     <section className={styles.cardSection}>
                         <div className={styles.flipCard}>
-                        <div className={styles.flipCardInner} style={{ transform: !showFront ? `rotateY(180deg)`: null }}>
+                        <div className={styles.flipCardInner} style={{ transform: showFront ? null : `rotateY(180deg)`}}>
                             <div className={styles.flipCardFront}>
-                                {flashcards[index].key}
+                                <span>{flashcards[index].key}</span>
                             </div>
                             <div className={styles.flipCardBack}>
-                                {flashcards[index].value}
+                                <span>{flashcards[index].value}</span>
                             </div>
                         </div>
                     </div>
